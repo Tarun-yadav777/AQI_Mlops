@@ -1,0 +1,18 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python src/data/load_data.py --config=params.yaml
+    deps:
+    - path: data_given/Real_combine.csv
+      md5: 936a7baaaf19c969611edf24f16c3ad0
+      size: 61870
+    - path: src/data/load_data.py
+      md5: b9b8fd03446e04f0a4806224a5901e18
+      size: 799
+    - path: src/data/make_dataset.py
+      md5: 3ff4a2cecaf639618897be3c96dad2cd
+      size: 589
+    outs:
+    - path: data/raw/Real_combine.csv
+      md5: 4696103505ff74b93561832d5e8b2be3
+      size: 59637
