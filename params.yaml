@@ -4,7 +4,7 @@ base:
   target_col: TARGET
 
 data_source:
-  source: gdrive://1_k2gUpd3Bn-ni3k8dk6j9O6EHg7jQPil
+  source: data_given/Real_combine.csv
 
 load_data:
   raw_dataset_csv: data/raw/Real_combine.csv
@@ -20,7 +20,7 @@ estimators:
       n_estimators: 500
       min_samples_split: 2
       min_samples_leaf: 1
-      max_features: 'sqrt'
+      max_features: sqrt
       max_depth: 15
 
 model_dir: models
