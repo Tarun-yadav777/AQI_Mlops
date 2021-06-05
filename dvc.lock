@@ -32,3 +32,16 @@ stages:
     - path: data/raw/train_data.csv
       md5: 5ede0aa1e112464a8a2a12e5ade03782
       size: 47620
+  feature_importance:
+    cmd: python src/features/build_features.py --config=params.yaml
+    deps:
+    - path: data/raw/Real_combine.csv
+      md5: 4696103505ff74b93561832d5e8b2be3
+      size: 59637
+    - path: src/features/build_features.py
+      md5: c85f6b2a31833416df382c0976f04c87
+      size: 1419
+    outs:
+    - path: reports/feature_importance.json
+      md5: b17de72e62f4585174d6382b72bd3a5d
+      size: 256

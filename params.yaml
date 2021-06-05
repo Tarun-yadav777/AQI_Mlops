@@ -1,7 +1,7 @@
 base:
   project: AQI_Mlops
   random_state: 42
-  target_col: TARGET
+  target_col: PM 2.5
 
 data_source:
   source: data_given/Real_combine.csv
@@ -26,6 +26,7 @@ estimators:
 model_dir: models
 
 reports:
+  feature_importance: reports/feature_importance.json
   params: report/params.json
   scores: report/scores.json
 
