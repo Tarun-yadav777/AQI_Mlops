@@ -1,0 +1,39 @@
+base:
+  project: AQI_Mlops
+  random_state: 42
+  target_col: TARGET
+
+data_source:
+  source: gdrive://1_k2gUpd3Bn-ni3k8dk6j9O6EHg7jQPil
+
+load_data:
+  raw_dataset_csv: data/raw/Real_combine.csv
+
+split_data:
+  train_path: data/processed/train_data.csv
+  test_path: data/processed/test_data.csv
+  test_size: 0.2
+
+estimators:
+  RandomForestRegressor:
+    params:
+      n_estimators: 500
+      min_samples_split: 2
+      min_samples_leaf: 1
+      max_features: 'sqrt'
+      max_depth: 15
+
+model_dir: models
+
+reports:
+  params: report/params.json
+  scores: report/scores.json
+
+webapp_model_dir: prediction_service/model/model.joblib
+
+mlflow_config:
+  artifacts_dir: artifacts
+  experiment_name: ElasticNet regression
+  run_name: mlops
+  registered_model_name: ElasticNetWineModel
+  remote_server_uri: http://127.0.0.1:5000
