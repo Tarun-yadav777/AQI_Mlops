@@ -1,7 +1,7 @@
 # ML-OPs with DVC
 
 ![Project Image](https://github.com/Tarun-yadav777/AQI_Mlops/blob/main/webapp/static/aqimlops.PNG)<br><br>
-> Live demo of app is https://aqimlop.herokuapp.com/ <br>
+> Live demo of app is https://aqimlops.herokuapp.com/ <br>
 > This is a ReadMe template to help save you time and effort.
 
 ---
