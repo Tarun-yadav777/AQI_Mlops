@@ -23,15 +23,15 @@ stages:
       md5: 4696103505ff74b93561832d5e8b2be3
       size: 59637
     - path: src/data/split_data.py
-      md5: 4a45b05934b068d9742b385e02c44f51
-      size: 1038
+      md5: 122af654aa0a6d602fb2ac0c1ea920ba
+      size: 1060
     outs:
     - path: data/raw/test_data.csv
-      md5: 608d0f664c1717a756436f0b6bd69079
-      size: 12047
+      md5: cba55f6b4c1a6b537c023a3ee1cc40fe
+      size: 12036
     - path: data/raw/train_data.csv
-      md5: 5ede0aa1e112464a8a2a12e5ade03782
-      size: 47620
+      md5: f61a4107f1a7627a8a1830abd59b2b34
+      size: 47589
   feature_importance:
     cmd: python src/features/build_features.py --config=params.yaml
     deps:
@@ -48,15 +48,12 @@ stages:
   train_and_evaluate:
     cmd: python src/models/train_model.py --config=params.yaml
     deps:
-    - path: data/raw/test_data.csv
-      md5: 608d0f664c1717a756436f0b6bd69079
-      size: 12047
     - path: data/raw/train_data.csv
-      md5: 5ede0aa1e112464a8a2a12e5ade03782
-      size: 47620
+      md5: f61a4107f1a7627a8a1830abd59b2b34
+      size: 47589
     - path: src/models/train_model.py
-      md5: 030b4988192e9d8a6355ef377ea992cf
-      size: 2121
+      md5: 9fe501578952d6bb511c789ed8f623c7
+      size: 2056
     params:
       params.yaml:
         estimators.RandomForestRegressor.params.max_depth: 15
@@ -66,5 +63,21 @@ stages:
         estimators.RandomForestRegressor.params.n_estimators: 500
     outs:
     - path: models/model.joblib
-      md5: 17a0c134c14baf1081ffa370001c14a0
-      size: 25015336
+      md5: 15896fc5e46c6bc53d6400a79073f3df
+      size: 25055656
+    - path: reports/params.json
+      md5: 68431c66fa4959f2995900438217a614
+      size: 137
+  evaluate_and_predict:
+    cmd: python src/models/predict_model.py --config=params.yaml
+    deps:
+    - path: data/raw/test_data.csv
+      md5: cba55f6b4c1a6b537c023a3ee1cc40fe
+      size: 12036
+    - path: src/models/predict_model.py
+      md5: 25ccfe3522423043a306262f075d6b07
+      size: 1561
+    outs:
+    - path: reports/scores.json
+      md5: 4614dd5bb286276425f4e30f22b44465
+      size: 98

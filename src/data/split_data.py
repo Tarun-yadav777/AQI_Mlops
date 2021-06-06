@@ -18,6 +18,7 @@ def split_and_save_data(config_path):
     split_ratio = config["split_data"]["test_size"]
     random_state = config["base"]["random_state"]
     df = pd.read_csv(raw_data_path)
+    df = df.dropna()
     train, test = train_test_split(df, test_size=split_ratio, random_state=random_state)
     train.to_csv(train_path, index=False)
     test.to_csv(test_path, index=False)
