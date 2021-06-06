@@ -45,3 +45,26 @@ stages:
     - path: reports/feature_importance.json
       md5: b17de72e62f4585174d6382b72bd3a5d
       size: 256
+  train_and_evaluate:
+    cmd: python src/models/train_model.py --config=params.yaml
+    deps:
+    - path: data/raw/test_data.csv
+      md5: 608d0f664c1717a756436f0b6bd69079
+      size: 12047
+    - path: data/raw/train_data.csv
+      md5: 5ede0aa1e112464a8a2a12e5ade03782
+      size: 47620
+    - path: src/models/train_model.py
+      md5: 030b4988192e9d8a6355ef377ea992cf
+      size: 2121
+    params:
+      params.yaml:
+        estimators.RandomForestRegressor.params.max_depth: 15
+        estimators.RandomForestRegressor.params.max_features: sqrt
+        estimators.RandomForestRegressor.params.min_samples_leaf: 1
+        estimators.RandomForestRegressor.params.min_samples_split: 2
+        estimators.RandomForestRegressor.params.n_estimators: 500
+    outs:
+    - path: models/model.joblib
+      md5: 17a0c134c14baf1081ffa370001c14a0
+      size: 25015336
