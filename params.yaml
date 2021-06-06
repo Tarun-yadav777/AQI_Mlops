@@ -29,6 +29,7 @@ reports:
   feature_importance: reports/feature_importance.json
   params: reports/params.json
   scores: reports/scores.json
+  plots: reports/figures
 
 webapp_model_dir: prediction_service/model/model.joblib
 

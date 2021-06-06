@@ -24,6 +24,7 @@ stages:
       - data/raw/Real_combine.csv
     metrics:
       - reports/feature_importance.json
+
   train_and_evaluate:
     cmd: python src/models/train_model.py --config=params.yaml
     deps:
@@ -49,6 +50,18 @@ stages:
     metrics:
     - reports/scores.json:
         cache: false
+
+  visualization:
+    cmd: python src/visualization/visualize.py --config=params.yaml
+    deps:
+      - data/raw/Real_combine.csv
+      - data/raw/test_data.csv
+      - src/models/predict_model.py
+      - reports/feature_importance.json
+    outs:
+      - reports/figures/correlation_plot.png
+      - reports/figures/feature_importance_plot.png
+      - reports/figures/predict_scatter_plot.png
 #  log_production_model:
 #    cmd: python src/log_production_model.py --config=params.yaml
 #    deps:

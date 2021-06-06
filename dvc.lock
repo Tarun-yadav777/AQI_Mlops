@@ -81,3 +81,28 @@ stages:
     - path: reports/scores.json
       md5: 4614dd5bb286276425f4e30f22b44465
       size: 98
+  visualization:
+    cmd: python src/visualization/visualize.py --config=params.yaml
+    deps:
+    - path: data/raw/Real_combine.csv
+      md5: 4696103505ff74b93561832d5e8b2be3
+      size: 59637
+    - path: data/raw/test_data.csv
+      md5: cba55f6b4c1a6b537c023a3ee1cc40fe
+      size: 12036
+    - path: reports/feature_importance.json
+      md5: b17de72e62f4585174d6382b72bd3a5d
+      size: 256
+    - path: src/models/predict_model.py
+      md5: 25ccfe3522423043a306262f075d6b07
+      size: 1561
+    outs:
+    - path: reports/figures/correlation_plot.png
+      md5: c8598651c4cd6ffce90e447466c1fc31
+      size: 64027
+    - path: reports/figures/feature_importance_plot.png
+      md5: 71f893d65dff74a34a216ad7ceb572cc
+      size: 56504
+    - path: reports/figures/predict_scatter_plot.png
+      md5: 3c8db88e24d0153f8118bd26ceb84bf8
+      size: 58377
