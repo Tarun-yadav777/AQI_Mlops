@@ -4,3 +4,8 @@ sklearn
 pandas
 matplotlib
 seaborn
+pytest
+tox
+flask
+gunicorn
+flake8

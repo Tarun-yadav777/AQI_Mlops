@@ -31,7 +31,7 @@ reports:
   scores: reports/scores.json
   plots: reports/figures
 
-webapp_model_dir: prediction_service/model/model.joblib
+webapp_model_dir: models/model.joblib
 
 mlflow_config:
   artifacts_dir: artifacts
